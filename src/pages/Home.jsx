@@ -1,11 +1,17 @@
 import React, { useState } from "react";
+import { data, useNavigate } from "react-router-dom";
 import { FaExchangeAlt, FaCalendarAlt, FaSuitcase, FaTrain } from "react-icons/fa";
 import styles from "../Styles/Home.module.css";
 import trainImage from "../assets/train1.jpg";
 
 const Home = () => {
+  const navigate = useNavigate();
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
+  const [date, setDate] = useState("");
+  const [travelClass, setTravelClass] = useState("All Classes");
+  const [quota, setQuota] = useState("General");
+
 
   const swapLocations = () => {
     setFrom(to);
@@ -42,7 +48,7 @@ const Home = () => {
             <FaTrain className={styles.icon} />
             <input
               type="text"
-              placeholder="To"
+              placeholder="To Station"
               value={to}
               onChange={(e) => setTo(e.target.value)}
               className={styles.input}
@@ -54,11 +60,17 @@ const Home = () => {
         <div className={styles.inputGroup}>
           <div className={styles.inputWrapper}>
             <FaCalendarAlt className={styles.icon} />
-            <input type="date" className={styles.input} />
+            <input 
+               type="date" 
+               className={styles.input}
+               value={data}
+               onChange={(e)=>setDate(e.target.value)} />
           </div>
           <div className={styles.inputWrapper}>
             <FaSuitcase className={styles.icon} />
-            <select className={styles.select}>
+            <select className={styles.select}
+                    value={travelClass}
+                    onChange={(e)=>setTravelClass(e.target.value)}>
               <option>All Classes</option>
               <option>Sleeper</option>
               <option>AC 3 Tier</option>
@@ -72,7 +84,9 @@ const Home = () => {
         <div className={styles.inputGroup}>
           <div className={styles.inputWrapper}>
             <FaTrain className={styles.icon} />
-            <select className={styles.select}>
+            <select className={styles.select}
+                    value={quota}
+                    onChange={(e)=>setQuota(e.target.value)}>
               <option>General</option>
               <option>Ladies</option>
               <option>Tatkal</option>
@@ -92,8 +106,9 @@ const Home = () => {
 
         {/* Buttons */}
         <div className={styles.buttonGroup}>
-          <button className={styles.searchButton}>Search</button>
-          <button className={styles.askDishaButton}>Easy Booking on AskDISHA</button>
+          <button className={styles.searchButton}>Search Trains</button>
+          <button className={styles.ShowTrain}
+                  onClick={()=>navigate("/train-search")}>Show All Trains</button>
         </div>
       </div>
     </div>

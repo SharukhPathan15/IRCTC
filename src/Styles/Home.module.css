@@ -100,7 +100,7 @@
   margin-top: 1rem;
 }
 
-.searchButton, .askDishaButton {
+.searchButton, .ShowTrain {
   flex: 1;
   padding: 0.8rem;
   border: none;
@@ -119,12 +119,12 @@
   background-color: #c0392b;
 }
 
-.askDishaButton {
+.ShowTrain {
   background-color: #3498db;
   color: white;
 }
 
-.askDishaButton:hover {
+.ShowTrain:hover {
   background-color: #2980b9;
 }
 
